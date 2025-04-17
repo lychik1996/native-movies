@@ -10,9 +10,9 @@ const SearchBar = ({
   onChangeText,
 }: {
   onPress?: () => void;
-  value: string;
+  value?: string;
   placeholder: string;
-  onChangeText: (text:string) => void;
+  onChangeText?: (text:string) => void;
 }) => {
   return (
     <View className="flex-row items-center bg-dark-200 rounded-full px-5 py-4">
