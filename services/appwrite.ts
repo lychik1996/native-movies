@@ -1,3 +1,4 @@
+import { Movie, TrendingMovie } from '@/interfaces/interfaces';
 import { Client, Databases, ID, Query } from 'react-native-appwrite';
 const DATABASE_ID = process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID!;
 const COLLECTION_ID = process.env.EXPO_PUBLIC_APPWRITE_COLOECTIONS_ID!;
@@ -13,7 +14,6 @@ export const updateSearchCount = async (query: string, movie: Movie) => {
     const result = await database.listDocuments(DATABASE_ID, COLLECTION_ID, [
       Query.equal('searchTerm', query),
     ]);
-    console.log(result);
     if (result.documents.length > 0) {
       const existingMovies = result.documents[0];
       await database.updateDocument(
@@ -45,10 +45,10 @@ export const getTrendingMovies = async (): Promise<
 > => {
   try {
     const result = await database.listDocuments(DATABASE_ID, COLLECTION_ID, [
-        Query.limit(5),
-        Query.orderDesc('count'),
-      ]);
-      return result.documents as unknown as TrendingMovie[];
+      Query.limit(5),
+      Query.orderDesc('count'),
+    ]);
+    return result.documents as unknown as TrendingMovie[];
   } catch (error) {
     console.log(error);
     return undefined;

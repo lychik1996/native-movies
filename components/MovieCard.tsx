@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
 import { Link } from 'expo-router';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { Movie } from '@/interfaces/interfaces';
 const MovieCard = ({
   id,
   poster_path,
